@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RK SOLUTIONS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
+body{background:#f4f6f9;overflow-x:hidden;}
+
+/* HEADER */
+.header{
+  margin:15px;
+  background:#fff;
+  border-radius:22px;
+  padding:14px;
+  box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+.header img{
+  width:100%;
+  max-height:150px;
+  object-fit:contain;
+}
+
+/* SLIDER COMMON */
+.slider-wrapper{
+  width:100%;
+  margin:22px 0;
+  overflow:hidden;
+  background:#fff;
+  position:relative;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+/* MAIN SLIDER */
+.main-slider{
+  aspect-ratio:18/7;
+}
+
+/* ✅ CE SLIDER – SLIGHTLY BIGGER THAN MEDIUM */
+.ce-slider{
+  height:260px;   /* desktop */
+  background:#fff;
+}
+
+/* SLIDER CORE */
+.slider-track{
+  display:flex;
+  height:100%;
+  transition:transform .8s ease;
+}
+.slide{min-width:100%;}
+
+/* MAIN SLIDER IMAGE */
+.main-slider .slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* CE SLIDER IMAGE */
+.ce-slider .slide img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#fff;
+}
+
+/* SLIDER BUTTONS */
+.slider-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.6);
+  color:#fff;
+  border:none;
+  padding:10px 14px;
+  font-size:18px;
+  cursor:pointer;
+  border-radius:50%;
+  z-index:10;
+}
+.prev{left:12px;}
+.next{right:12px;}
+.slider-btn:hover{background:#0284c7;}
+
+/* LANDING */
+.landing{padding:35px 15px;}
+.landing h2{text-align:center;font-size:26px;margin-bottom:25px;}
+
+.box-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+.box{
+  background:#fff;
+  border-radius:22px;
+  padding:28px;
+  text-align:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  transition:.35s;
+}
+.box:hover{transform:translateY(-6px) scale(1.03);}
+
+.box i{font-size:42px;margin-bottom:12px;}
+.box:nth-child(1) i{color:#0284c7;}
+.box:nth-child(2) i{color:#6366f1;}
+.box:nth-child(3) i{color:#f97316;}
+
+.btn{
+  display:inline-block;
+  margin-top:14px;
+  padding:11px 30px;
+  border-radius:30px;
+  color:#fff;
+  text-decoration:none;
+}
+.water-btn{background:#0284c7;}
+.current-btn{background:#6366f1;}
+.geyser-btn{background:#f97316;}
+
+/* CTA */
+.cta{text-align:center;padding:30px;}
+.cta a{
+  margin:8px;
+  padding:14px 34px;
+  border-radius:35px;
+  color:#fff;
+  text-decoration:none;
+}
+.call{background:#2563eb;}
+.whatsapp{background:#22c55e;}
+
+/* CE TEXT */
+.ce-text{
+  text-align:center;
+  padding:25px 15px 10px;
+}
+.ce-text h2{font-size:24px;margin-bottom:8px;}
+.ce-text p{font-size:15px;color:#555;}
+
+/* FOOTER */
+.info-dark{
+  background:#020617;
+  color:#cbd5e1;
+  padding:60px 20px 30px;
+}
+.info-grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+}
+.info-dark h3{color:#fff;margin-bottom:14px;font-size:22px;}
+.info-dark p{line-height:1.7;font-size:15px;}
+.info-dark a{color:#e5e7eb;text-decoration:none;}
+.info-dark a:hover{color:#38bdf8;}
+.info-dark i{margin-right:10px;color:#38bdf8;}
+
+.info-bottom{
+  text-align:center;
+  margin-top:40px;
+  font-size:14px;
+  color:#94a3b8;
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:18px;
+}
+
+/* FLOAT WHATSAPP */
+.float-wa{
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  background:#25D366;
+  color:#fff;
+  padding:15px;
+  border-radius:50%;
+  font-size:22px;
+  text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .main-slider{aspect-ratio:4/3;}
+  .ce-slider{height:180px;} /* mobile balanced */
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <img src="images/rk-main.jpeg">
+</header>
+
+<!-- MAIN SLIDER -->
+<div class="slider-wrapper main-slider" id="slider1">
+  <button class="slider-btn prev" onclick="prev(1)">❮</button>
+  <button class="slider-btn next" onclick="next(1)">❯</button>
+  <div class="slider-track" id="track1">
+    <div class="slide"><img src="images/slide1.jpeg"></div>
+    <div class="slide"><img src="images/slide2.jpeg"></div>
+    <div class="slide"><img src="images/slide3.jpeg"></div>
+  </div>
+</div>
+
+<!-- PRODUCT CATEGORIES -->
+<section class="landing">
+<h2>Our Product Categories</h2>
+<div class="box-grid">
+  <div class="box">
+    <i class="fa-solid fa-water"></i>
+    <h3>Water Solutions</h3>
+    <a href="water-solutions.html" class="btn water-btn">Explore</a>
+  </div>
+  <div class="box">
+    <i class="fa-solid fa-industry"></i>
+    <h3>Current Equipments</h3>
+    <a href="current-equipments.html" class="btn current-btn">View</a>
+  </div>
+  <div class="box">
+    <i class="fa-solid fa-fire"></i>
+    <h3>Easy Install</h3>
+    <a href="easy-install.html" class="btn geyser-btn">Know More</a>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <a href="tel:+919390048830" class="call">📞 Call Now</a>
+  <a href="https://wa.me/919000412766" class="whatsapp">💬 WhatsApp</a>
+</section>
+
+<!-- CE SLIDER -->
+<div class="slider-wrapper ce-slider" id="slider2">
+  <button class="slider-btn prev" onclick="prev(2)">❮</button>
+  <button class="slider-btn next" onclick="next(2)">❯</button>
+  <div class="slider-track" id="track2">
+    <div class="slide"><img src="images/ce1.jpeg"></div>
+    <div class="slide"><img src="images/ce2.jpeg"></div>
+    <div class="slide"><img src="images/ce3.jpeg"></div>
+    <div class="slide"><img src="images/ce4.jpeg"></div>
+  </div>
+</div>
+
+<div class="ce-text">
+  <h2>Premium Quality Guaranteed</h2>
+  <p>Advanced automation solutions with reliability & innovation</p>
+</div>
+
+<!-- FOOTER -->
+<section class="info-dark">
+  <div class="info-grid">
+    <div>
+      <h3>About Us</h3>
+      <p>
+        RK Solutions specializes in automation, electrical safety systems,
+        and energy-efficient solutions for homes and industries.
+      </p>
+    </div>
+
+    <div>
+      <h3>Contact Info</h3>
+      <p><i class="fa-solid fa-phone"></i>
+        <a href="tel:+919390048830">+91 9390048830</a></p>
+      <p><i class="fa-brands fa-whatsapp"></i>
+        <a href="https://wa.me/919000412766" target="_blank">+91 9000412766</a></p>
+      <p><i class="fa-solid fa-envelope"></i>
+        <a href="mailto:solutionsrf44@gmail.com">solutionsrf44@gmail.com</a></p>
+      <p><i class="fa-solid fa-location-dot"></i>
+        <a href="https://www.google.com/maps/place/Auto+Nagar,+Hyderabad" target="_blank">
+          Auto Nagar, Hyderabad
+        </a>
+      </p>
+    </div>
+
+    <div>
+      <h3>Our Services</h3>
+      <p>✔ Water Automation</p>
+      <p>✔ Electrical Protection</p>
+      <p>✔ Industrial Equipments</p>
+      <p>✔ Installation & Support</p>
+    </div>
+  </div>
+
+  <div class="info-bottom">
+    © 2025 RK SOLUTIONS. All Rights Reserved.
+  </div>
+</section>
+
+<a href="https://wa.me/919000412766" class="float-wa">💬</a>
+
+<script>
+const sliders={
+  1:{i:0,t:3,track:track1},
+  2:{i:0,t:4,track:track2}
+};
+
+function update(n){
+  sliders[n].track.style.transform=`translateX(-${sliders[n].i*100}%)`;
+}
+function next(n){
+  sliders[n].i=(sliders[n].i+1)%sliders[n].t;
+  update(n);
+}
+function prev(n){
+  sliders[n].i=(sliders[n].i-1+sliders[n].t)%sliders[n].t;
+  update(n);
+}
+
+setInterval(()=>next(1),4000);
+setInterval(()=>next(2),3500);
+</script>
+
+</body>
+</html>
