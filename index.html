@@ -35,14 +35,14 @@ body{background:#f4f6f9;overflow-x:hidden;}
   box-shadow:0 15px 35px rgba(0,0,0,.15);
 }
 
-/* MAIN SLIDER */
+/* MAIN SLIDER (DESKTOP SAME) */
 .main-slider{
   aspect-ratio:18/7;
 }
 
-/* ✅ CE SLIDER – SLIGHTLY BIGGER THAN MEDIUM */
+/* CE SLIDER – SAME AS YOUR CODE */
 .ce-slider{
-  height:260px;   /* desktop */
+  height:260px;
   background:#fff;
 }
 
@@ -54,14 +54,12 @@ body{background:#f4f6f9;overflow-x:hidden;}
 }
 .slide{min-width:100%;}
 
-/* MAIN SLIDER IMAGE */
+/* IMAGES */
 .main-slider .slide img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
-
-/* CE SLIDER IMAGE */
 .ce-slider .slide img{
   width:100%;
   height:100%;
@@ -123,14 +121,21 @@ body{background:#f4f6f9;overflow-x:hidden;}
 .current-btn{background:#6366f1;}
 .geyser-btn{background:#f97316;}
 
-/* CTA */
-.cta{text-align:center;padding:30px;}
+/* CTA – FIXED FOR MOBILE */
+.cta{
+  text-align:center;
+  padding:30px 12px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
 .cta a{
-  margin:8px;
-  padding:14px 34px;
+  padding:14px 36px;
   border-radius:35px;
   color:#fff;
   text-decoration:none;
+  min-width:220px;
 }
 .call{background:#2563eb;}
 .whatsapp{background:#22c55e;}
@@ -184,10 +189,18 @@ body{background:#f4f6f9;overflow-x:hidden;}
   text-decoration:none;
 }
 
-/* MOBILE */
+/* ✅ MOBILE FIXES (ONLY REQUIRED CHANGES) */
 @media(max-width:768px){
-  .main-slider{aspect-ratio:4/3;}
-  .ce-slider{height:180px;} /* mobile balanced */
+  /* FIX 1: MAIN SLIDER MOBILE */
+  .main-slider{
+    height:220px;
+  }
+  .main-slider img{
+    object-fit:cover;
+  }
+
+  /* CE SLIDER SAME */
+  .ce-slider{height:180px;}
 }
 </style>
 </head>
@@ -199,7 +212,7 @@ body{background:#f4f6f9;overflow-x:hidden;}
 </header>
 
 <!-- MAIN SLIDER -->
-<div class="slider-wrapper main-slider" id="slider1">
+<div class="slider-wrapper main-slider">
   <button class="slider-btn prev" onclick="prev(1)">❮</button>
   <button class="slider-btn next" onclick="next(1)">❯</button>
   <div class="slider-track" id="track1">
@@ -238,7 +251,7 @@ body{background:#f4f6f9;overflow-x:hidden;}
 </section>
 
 <!-- CE SLIDER -->
-<div class="slider-wrapper ce-slider" id="slider2">
+<div class="slider-wrapper ce-slider">
   <button class="slider-btn prev" onclick="prev(2)">❮</button>
   <button class="slider-btn next" onclick="next(2)">❯</button>
   <div class="slider-track" id="track2">
@@ -254,7 +267,6 @@ body{background:#f4f6f9;overflow-x:hidden;}
   <p>Advanced automation solutions with reliability & innovation</p>
 </div>
 
-<!-- FOOTER -->
 <section class="info-dark">
   <div class="info-grid">
     <div>
@@ -265,7 +277,7 @@ body{background:#f4f6f9;overflow-x:hidden;}
       </p>
     </div>
 
-    <div>
+     <div>
       <h3>Contact Info</h3>
       <p><i class="fa-solid fa-phone"></i>
         <a href="tel:+919390048830">+91 9390048830</a></p>
@@ -298,8 +310,8 @@ body{background:#f4f6f9;overflow-x:hidden;}
 
 <script>
 const sliders={
-  1:{i:0,t:3,track:track1},
-  2:{i:0,t:4,track:track2}
+  1:{i:0,t:3,track:document.getElementById("track1")},
+  2:{i:0,t:4,track:document.getElementById("track2")}
 };
 
 function update(n){
